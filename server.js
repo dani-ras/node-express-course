@@ -5,11 +5,11 @@ const express = require('express')
 const app = express();
 
 const mockUserData = [
-    {name:"Mark"},
-    {name:"Jill"}
+    { name: "Mark" },
+    { name: "Jill" }
 ]
 
-app.get('/users', function(req,res){
+app.get('/users', function (req, res) {
     res.json({
         success: true,
         message: "successfully got users. Nice!",
@@ -17,6 +17,15 @@ app.get('/users', function(req,res){
     })
 })
 
-app.listen(8000,function(){
+app.get('/users/:id', (req, res) => {
+    console.log(req.params.id)
+    res.json({
+        success: true,
+        message: "got one user",
+        users: req.params.id
+    })
+})
+
+app.listen(8000, function () {
     console.log("server is running")
 })
